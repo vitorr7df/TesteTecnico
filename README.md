@@ -17,7 +17,7 @@ Antes de iniciar, certifique-se de ter os seguintes requisitos instalados:
 Clone o repositório para sua máquina local:
 
 ```bash
-git clone https://link-do-repositorio.git
+git clone https://github.com/vitorr7df/TesteTecnico.git
 cd TesteTecnico
 ```
 
