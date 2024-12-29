@@ -2,6 +2,8 @@
 
 Este projeto é uma aplicação simples composta por três partes: Backend (Node.js), Frontend (React), e um banco de dados (MySQL). Ele foi projetado para ser executado em containers Docker, garantindo um ambiente de desenvolvimento isolado e fácil de configurar.
 
+Foi implementado um crud de usuarios, com login e cadastro, uso de token para utilização do sistema e proteção de rotas, criptografia de senha, dentre outras funcionalidades, ainda estando aberto a receber novas features.
+
 ## Requisitos
 
 Antes de iniciar, certifique-se de ter os seguintes requisitos instalados:
@@ -45,6 +47,12 @@ Banco de Dados MySQL: Porta 3306, acesso via root com a senha root.
 
 O MySQL será iniciado com um banco de dados chamado testdb, e o arquivo init.sql será executado automaticamente, criando a tabela users.
 
+Abra um outro terminal e dê permissão ao arquivo init.sql:
+
+```bash
+chmod 777 ./init.sql
+```
+
 Para verificar a criação da tabela, você pode acessar o MySQL via linha de comando:
 
 ```bash
@@ -58,17 +66,6 @@ SHOW TABLES;
 ```
 
 A tabela users deve aparecer na lista.
-
-Obs.: Caso não tenha sido criado a tabela automaticamente pare o container e dê permissão ao arquivo init.sql e execute novamente o projeto.
-
-```bash
-chmod 777 ./init.sql
-```
-
-```bash
-docker-compose down -v
-docker-compose up
-```
 
 ### Passo 5: Testes
 
