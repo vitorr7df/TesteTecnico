@@ -3,15 +3,12 @@ import { TextField, Button, Typography, Box, Container } from '@mui/material';
 import { ToastContainer, toast } from 'react-toastify';
 import api from '../services/api';
 import 'react-toastify/dist/ReactToastify.css';
-import { useNavigate } from 'react-router-dom';
 
-const SignupForm = ({ onLoading }) => {
+const SignupForm = ({ onLoading, cadastroCompleto }) => {
     const [name, setName] = useState('');
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [confirmPassword, setConfirmPassword] = useState('');
-
-    const navigate = useNavigate();
 
     const insertUser = async (e) => {
         e.preventDefault();
@@ -29,12 +26,13 @@ const SignupForm = ({ onLoading }) => {
             });
             console.log(response.data);
             toast.success("Usuário cadastrado com sucesso!");
-            navigate('/');
 
             setName('');
             setEmail('');
             setPassword('');
             setConfirmPassword('');
+
+            cadastroCompleto();
         } catch (err) {
             toast.error('Erro ao cadastrar usuário. Tente novamente.');
         } finally {

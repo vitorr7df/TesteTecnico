@@ -10,11 +10,19 @@ const AuthPage = ({ onLoading }) => {
         setIsLogin(!isLogin);
     };
 
+    const irProLogin = () => {
+        setIsLogin(true);
+    };
+
     return (
         <Box sx={{ textAlign: 'center', marginTop: 5 }}>
             <img src={require('../assets/1300231.svg').default} alt="Carro" className="car-icon" />
 
-            {isLogin ? <LoginForm onLoading={onLoading} /> : <SignupForm onLoading={onLoading} />}
+            {isLogin ? (
+                <LoginForm onLoading={onLoading} />
+            ) : (
+                <SignupForm onLoading={onLoading} cadastroCompleto={irProLogin} />
+            )}
             <Button onClick={toggleForm} sx={{ mt: 2 }}>
                 {isLogin ? 'Criar conta' : 'Já tem uma conta? Faça Login'}
             </Button>

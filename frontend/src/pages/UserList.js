@@ -63,7 +63,11 @@ const UsersList = ({ onLoading }) => {
             getUsers();
             closeModalUpdate();
         } catch (error) {
-            toast.error('Erro ao atualizar usuário.');
+            if (error.response && error.response.data && error.response.data.error) {
+                toast.error(error.response.data.error);
+            } else {
+                toast.error('Erro ao adicionar usuário.');
+            }
         } finally {
             onLoading(false);
         }
@@ -96,7 +100,11 @@ const UsersList = ({ onLoading }) => {
             getUsers();
             closeAddUserModal();
         } catch (error) {
-            toast.error('Erro ao adicionar usuário.');
+            if (error.response && error.response.data && error.response.data.error) {
+                toast.error(error.response.data.error);
+            } else {
+                toast.error('Erro ao adicionar usuário.');
+            }
         } finally {
             onLoading(false);
         }
