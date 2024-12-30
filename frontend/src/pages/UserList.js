@@ -178,7 +178,6 @@ const UsersList = ({ onLoading }) => {
                 </TableBody>
             </Table>
 
-            {/* Modal de Edição */}
             <Dialog open={openModal} onClose={closeModalUpdate}>
                 <DialogTitle>Editar Usuário</DialogTitle>
                 <DialogContent>
@@ -207,7 +206,6 @@ const UsersList = ({ onLoading }) => {
                 </DialogActions>
             </Dialog>
 
-            {/* Modal de Confirmação de Exclusão */}
             <Dialog open={openConfirmDelete} onClose={closeConfirmDelete}>
                 <DialogTitle>Confirmar Exclusão</DialogTitle>
                 <DialogContent>
@@ -223,7 +221,6 @@ const UsersList = ({ onLoading }) => {
                 </DialogActions>
             </Dialog>
 
-            {/* Modal de Adicionar Usuário */}
             <Dialog open={openAddModal} onClose={closeAddUserModal}>
                 <DialogTitle>Adicionar Novo Usuário</DialogTitle>
                 <DialogContent>

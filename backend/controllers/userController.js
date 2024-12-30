@@ -14,7 +14,6 @@ exports.getAllUsers = async (req, res) => {
 exports.createUser = async (req, res) => {
     const { name, email, password } = req.body;
 
-    // Criptografar a senha
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
 
@@ -50,14 +49,12 @@ exports.login = async (req, res) => {
     const { email, password } = req.body;
 
     try {
-        // Verificando se o usuário existe
         const [rows] = await db.query('SELECT * FROM users WHERE email = ?', [email]);
 
         if (rows.length === 0) {
             return res.status(400).json({ error: 'Usuário não encontrado' });
         }
 
-        // Verificando a senha
         const user = rows[0];
         const isMatch = await bcrypt.compare(password, user.password);
 
@@ -65,14 +62,12 @@ exports.login = async (req, res) => {
             return res.status(400).json({ error: 'Senha incorreta' });
         }
 
-        // Gerando o token JWT
         const token = jwt.sign(
             { id: user.id, email: user.email },
-            'your-secret-key',  // Altere para uma chave secreta mais segura
-            { expiresIn: '1h' } // Token expira após 1 hora
+            'SWD_TOKEN_CRIPTOGRADO_3789@*',
+            { expiresIn: '1h' }
         );
 
-        // Retornando o token e dados do usuário
         res.status(200).json({
             message: 'Login bem-sucedido',
             token,

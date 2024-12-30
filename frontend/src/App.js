@@ -11,9 +11,9 @@ function App() {
     const [loading, setLoading] = useState(false);
 
     useEffect(() => {
-        const savedTheme = localStorage.getItem('darkMode');
-        if (savedTheme) {
-            setDarkMode(JSON.parse(savedTheme));
+        const salvarTema = localStorage.getItem('darkMode');
+        if (salvarTema) {
+            setDarkMode(JSON.parse(salvarTema));
         }
     }, []);
 
@@ -29,13 +29,13 @@ function App() {
         },
     });
 
-    const toggleTheme = () => {
+    const alterarTema = () => {
         const newDarkMode = !darkMode;
         setDarkMode(newDarkMode);
         localStorage.setItem('darkMode', JSON.stringify(newDarkMode));
     };
 
-    const handleLoading = (status) => {
+    const startLoading = (status) => {
         setLoading(status);
     };
 
@@ -45,7 +45,7 @@ function App() {
             <CssBaseline />
             <Router>
                 <div className="App">
-                    <IconButton className="theme-toggle" onClick={toggleTheme} color="inherit">
+                    <IconButton className="theme-toggle" onClick={alterarTema} color="inherit">
                         {darkMode ? <WbSunny /> : <NightlightRound />}
                     </IconButton>
 
@@ -56,12 +56,12 @@ function App() {
                     )}
 
                     <Routes>
-                        <Route path="/" element={<AuthPage onLoading={handleLoading} />} />
+                        <Route path="/" element={<AuthPage onLoading={startLoading} />} />
                         <Route
                             path="/userlist"
                             element={
                                 <ProtectedRoute>
-                                    <UserList onLoading={handleLoading} />
+                                    <UserList onLoading={startLoading} />
                                 </ProtectedRoute>
                             }
                         />
